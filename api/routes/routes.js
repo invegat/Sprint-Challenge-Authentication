@@ -4,7 +4,7 @@ const {
   compareUserPW
 } = require('../utils/middlewares');
 
-const { getAllJokes, createUser, login } = require('../controllers');
+const { getAllJokes, createUser, login, logout } = require('../controllers');
 
 module.exports = server => {
   server.get('/api/jokes', authenticate, getAllJokes);
@@ -20,4 +20,5 @@ module.exports = server => {
     }
       /* I need some controller Love*/);
   server.route('/api/login').post(compareUserPW, login);
+  server.route('/api/logout').post(authenticate, logout);
 };

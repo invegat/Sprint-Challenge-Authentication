@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.punchline {
+  font-family: 'Merriweather', serif;
+  color: purple;
+}
+.type {
+  color: blue;
+}

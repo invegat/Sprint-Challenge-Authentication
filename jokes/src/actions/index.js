@@ -19,7 +19,7 @@ export const authError = error => {
 };
 export const register = (username, password, confirmPassword, history) => {
   return dispatch => {
-    console.log(`register username: ${username} password: ${password} confirmPassword: ${confirmPassword} ROOT_URL: ${ROOT_URL}`);
+    // log(`register username: ${username} password: ${password} confirmPassword: ${confirmPassword} ROOT_URL: ${ROOT_URL}`);
     if (password !== confirmPassword) {
       dispatch(authError('Passwords do not match'));
       return;
@@ -30,7 +30,7 @@ export const register = (username, password, confirmPassword, history) => {
         password
       })
       .then((res) => {
-        console.log(`register token : ${res.data.token}`)
+        // catchLog(`register token : ${res.data.token}`)
         localStorage.setItem('token', res.data.token);
         dispatch({
           type: USER_REGISTERED
@@ -44,6 +44,7 @@ export const register = (username, password, confirmPassword, history) => {
 };
 
 export const login = (username, password, history) => {
+  console.log(`login - username: ${username} password ${password}`)
   return dispatch => {
     axios({
         method: 'post',
@@ -54,6 +55,7 @@ export const login = (username, password, history) => {
         }
       })
       .then((res) => {
+        // log(`login token: ${res.data.token}`.green)
         localStorage.setItem('token', res.data.token);
         dispatch({
           type: USER_AUTHENTICATED
@@ -61,6 +63,7 @@ export const login = (username, password, history) => {
         history.push('/jokes');
       })
       .catch((err) => {
+      // catchLog(`login err: ${err}`.red)
         dispatch(authError(`Incorrect username/password combo err: ${err}`));
       });
   };

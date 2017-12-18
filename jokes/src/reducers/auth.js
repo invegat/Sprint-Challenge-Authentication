@@ -18,4 +18,4 @@ export default (auth = {}, action) => {
     default:
       return auth;
   }
-};
+};  // developer/github.com/v3/git/commits
